@@ -1,0 +1,36 @@
+.cover-caption {
+	width: 100%;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	color: white;
+}
+
+.cover {
+	background: url("Images/purple_mountains1.jpg") center center no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.card-row {
+	padding: 1rem;
+}
+
+.card {
+	opacity: 0.8;
+}
+
+.card:hover {
+	opacity: 1;
+}
+
+a{
+	color: white;
+}
+
+a:hover {
+	color: antiquewhite;
+}
+
+a:link {
+	text-decoration: none;
+}
