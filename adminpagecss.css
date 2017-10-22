@@ -1,0 +1,79 @@
+/* Sidebar */
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	padding: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
+	z-index: 1;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border: 1px solid #eee;
+	background: #7376df;
+}
+
+.sidebar .logout-button {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	width: 85%;
+	text-align: center;
+	border-radius: .3rem;
+}
+
+.sidebar a {
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1rem;
+	letter-spacing: 0.2rem;
+	padding: 0.75rem 1rem;
+	width: 100%;
+}
+
+.sidebar a:hover {
+	background-color: #6365d2;
+}
+
+/*.sidebar h1 {
+	color: #fff;
+	border: none;
+	font-size: 0.9rem;
+	padding: 0rem 1rem;
+	text-transform: uppercase;
+	letter-spacing: 0.2rem;
+}*/
+
+.sidebar .sidebar-title {
+	margin-top: 0.5rem;
+	margin-bottom: 1.75rem;
+}
+.pl-4 {
+	padding-left: 1.5rem !important;
+}
+
+.pt-3 {
+	padding-top: 1rem !important;
+}
+.page-header {
+	margin-top: 0rem;
+	margin-bottom: 2.4rem;
+	padding: 1rem;
+	border-bottom: 1px solid #eee;
+	height: auto;
+}
+
+.page-header h1 {
+	display: inline;
+	border: none;
+	padding: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	width: 100%;
+}
+
+.jumbotron {
+	padding: 2rem 3rem;
+	background-color: #f7f7f7;
+}
