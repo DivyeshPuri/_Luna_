@@ -65,7 +65,7 @@ function test_input($data) {
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
                 <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
+            </ol> 
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="first-slide" src="min.jpeg" alt="First slide" style="border-radius: 4px">
