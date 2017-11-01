@@ -6,7 +6,7 @@
 }
 
 .cover {
-	background: url("Images/purple_mountains1.jpg") center center no-repeat;
+	background: #4d0066 center center no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 }
@@ -17,6 +17,7 @@
 
 .card {
 	opacity: 0.8;
+	max-width: 18rem;
 }
 
 .card:hover {
