@@ -25,6 +25,15 @@
 						<li class="nav-item">
 							<a href="trial_events.php" class="nav-link">Events</a>
 						</li>
+                        <li class="nav-items">
+                            <a href="addEvent.php" class="nav-link"><em class="fa fa-plus"></em> Add Events</a>
+                        </li>
+                        <li class="nav-items">
+                            <a href="addSubEvents.php" class="nav-link"><em class="fa fa-plus"></em> Add Sub Events</a>
+                        </li>
+                        <li class="nav-items">
+                            <a href="deleteEvent.php" class="nav-link"><em class="fa fa-trash-o"></em> Remove Events</a>
+                        </li>
 					</ul>
 					<a href="#" class="logout-button">
 						<em class="fa fa-lock"></em>
