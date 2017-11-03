@@ -23,7 +23,7 @@
         $query = "INSERT INTO " . $whichDB . " (list) VALUES ('$add_events')";
         if($valid) {
             if(mysqli_query($dbc, $query)) {
-                echo 'Successfully added';
+                header('Location: addSubEvents.php');
             } else {
                 echo 'Error: ' . mysqli_error($dbc);
             }

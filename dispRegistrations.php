@@ -6,6 +6,7 @@
 <title>Luna</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="dispRegistrationscss.css" rel="stylesheet">
+    <link href="font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -24,6 +25,15 @@
                 </li>
                 <li class="nav-item">
                     <a href="trial_events.php" class="nav-link">Events</a>
+                </li>
+                <li class="nav-items">
+                    <a href="addEvent.php" class="nav-link"><em class="fa fa-plus"></em> Add Events</a>
+                </li>
+                <li class="nav-items">
+                    <a href="addSubEvents.php" class="nav-link"><em class="fa fa-plus"></em> Add SubEvents</a>
+                </li>
+                <li class="nav-items">
+                    <a href="deleteEvent.php" class="nav-link"><em class="fa fa-trash-o"></em> Remove Events</a>
                 </li>
             </ul>
             <a href="#" class="logout-button">

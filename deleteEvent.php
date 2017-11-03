@@ -36,41 +36,34 @@
                     <a href="deleteEvent.php" class="nav-link"><em class="fa fa-trash-o"></em> Remove Events</a>
                 </li>
             </ul>
-            <a href="#" class="logout-button">
-                <em class="fa fa-lock"></em>
-                Signout
-            </a>
+            <a href="#" class="logout-button"><em class="fa fa-lock"></em> Signout</a>
         </nav>
         <main class="col-10 ml-auto">
             <header class="page-header row">
                 <div class="col-md-6 col-lg-8">
-                    <h1 class="display-4">Add/Remove Events</h1>
+                    <h1 class="display-4">Remove Events</h1>
                 </div>
             </header>
             <div class="col-12">
-                <form action="addSubEventsToDB.php" method="post">
+                <form action="deleteEventDB.php" method="post">
                     <div class="form-group">
-                        <label for="addSubEvent">Select Event</label>
-                        <select class="form-control" id="addSubEvent" name="sub_events">
+                        <label for="addEvent">Delete Event</label>
+                        <select class="form-control" id="delSubEvent" name="delete_subevents">
                             <?php
-                                require_once ("config.php");
-                                $query = "SELECT event_name FROM events";
-                                $response = @mysqli_query($dbc, $query);
-                                if ($response) {
-                                    while ($row = mysqli_fetch_array($response)) {
-                                        echo '<option>' . $row['event_name'] . '</option>';
-                                    }
-                                } else {
-                                    echo "Error: " . mysqli_error($dbc);
+                            require_once ("config.php");
+                            $query = "SELECT event_name FROM events";
+                            $response = @mysqli_query($dbc, $query);
+                            if ($response) {
+                                while ($row = mysqli_fetch_array($response)) {
+                                    echo '<option>' . $row['event_name'] . '</option>';
                                 }
+                            } else {
+                                echo "Error: " . mysqli_error($dbc);
+                            }
                             ?>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="addsub">Add SubEvent</label>
-                        <input type="text" id="addsub" class="form-control" name="addSub">
-                    </div>
-                    <button class="btn btn-primary" type="submit" name="submit">Add</button>
+                    <button class="btn btn-primary" type="submit" name="submit">Delete</button>
                 </form>
             </div>
         </main>
