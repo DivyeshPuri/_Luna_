@@ -13,31 +13,31 @@ $name = $email = $password = $college = "";
 $nameErr = $emailErr = $passwordErr = $collegeErr = "";
 if(isset($_POST['submit']))
 {
-    if (empty($_POST("name"))){
+    if (empty($_POST["name"])){
         $nameErr = "Name is Required";
     }
     else{
-        $name = test_input($_POST("name"));
+        $name = test_input($_POST["name"]);
         if (!preg_match("/^[a-zA-Z ]*$/",$name)){
             $nameErr = "Only letters and white space allowed";
         }
     }
     $password=$_POST["password"];
-    if (empty($_POST("email"))){
+    if (empty($_POST["email"])){
         $emailErr = "E-mail is Required";
     }
     else{
-        $name = test_input($_POST("name"));
+        $email = test_input($_POST["email"]);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
             $emailErr = "Invalid email format";
         }
     }
-    if (empty($_POST("college"))){
+    if (empty($_POST["college"])){
         $collegeErr = "College is Required";
     }
     else{
-        $name = test_input($_POST("college"));
-        if (!preg_match("/^[a-zA-Z ]*$/",$name)){
+        $college = test_input($_POST["college"]);
+        if (!preg_match("/^[a-zA-Z ]*$/",$college)){
             $collegeErr = "Only letters and white space allowed";
         }
     }
@@ -144,26 +144,26 @@ function test_input($data) {
                     </a>
             </div>-->
             <div class="form-group">
-                <label for="username">FULL NAME</label>
-                <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="Full Name" style="border: 0px; background-color: transparent;border-bottom: 1px solid;color: white;font-size: 14px">
+                <label for="name">FULL NAME</label>
+                <input type="text" class="form-control" id="name" name="name" value="" required="" title="Please enter you username" placeholder="Full Name" style="border: 0px; background-color: transparent;border-bottom: 1px solid;color: white;font-size: 14px">
                 <span class="error"><?php echo $nameErr;?></span>
             </div>
             <div class="form-group">
-                <label for="password">PASSWORD</label>
-                <input type="text" class="form-control" id="email" name="Email" value="" required="" title="Enter your Email here" placeholder="Email@address.com" style="border: 0px; background-color: transparent;border-bottom: 1px solid;color: white;font-size: 14px">
-                <span class="error"><?php echo $passwordErr;?></span>
-            </div>
-            <div class="form-group">
                 <label for="email">E-MAIL</label>
-                <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password" placeholder="Password" style="border: 0px; background-color: transparent;border-bottom: 1px solid;color: white;font-size: 14px">
+                <input type="text" class="form-control" id="email" name="email" value="" required="" title="Enter your Email here" placeholder="Email@address.com" style="border: 0px; background-color: transparent;border-bottom: 1px solid;color: white;font-size: 14px">
                 <span class="error"><?php echo $emailErr;?></span>
             </div>
             <div class="form-group">
+                <label for="password">PASSWORD</label>
+                <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password" placeholder="Password" style="border: 0px; background-color: transparent;border-bottom: 1px solid;color: white;font-size: 14px">
+                <span class="error"><?php echo $passwordErr;?></span>
+            </div>
+            <div class="form-group">
                 <label for="college">COLLEGE</label>
-                <input type="text" class="form-control" id="college" name="College" value="" required="" title="Enter your College here" placeholder="College" style="border: 0px; background-color: transparent;border-bottom: 1px solid;color: white;font-size: 14px">
+                <input type="text" class="form-control" id="college" name="college" value="" required="" title="Enter your College here" placeholder="College" style="border: 0px; background-color: transparent;border-bottom: 1px solid;color: white;font-size: 14px">
                 <span class="error"><?php echo $collegeErr;?></span>
             </div>
-            <button type="submit" class="btn btn-success btn-block" style="background-color: #90A4AE;border-radius: 30px;width: 30%">Login</button>
+            <input type="submit" name="submit" value="Login" style="background-color: #90A4AE;border-radius: 30px;width: 30%">
         </form>
     </div>
 </div>

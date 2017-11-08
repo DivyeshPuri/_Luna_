@@ -5,9 +5,4 @@ if($conn == false)
 {
     echo "connection is not done";
 }
-else
-{
-    echo " successful";
-}
-
 ?>
