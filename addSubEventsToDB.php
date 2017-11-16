@@ -10,27 +10,36 @@
 </head>
 <body>
 <?php
-    require_once ("config.php");
-    $whichDB = mysqli_real_escape_string($dbc, $_REQUEST['sub_events']);
+    //require_once ("config.php");
+    $conn=mysqli_connect("localhost","root","","trial");
+    //$whichDB = mysqli_real_escape_string($dbc, $_REQUEST['sub_events']);
     $valid = true;
-    $add_events = mysqli_real_escape_string($dbc, $_REQUEST['addSub']);
-    if(isset($_POST['submit'])) {
+   // $add_events = mysqli_real_escape_string($dbc, $_REQUEST['addSub']);
+   if(isset($_POST["submit"]))
+   {
+   $whichDB=$_POST["sub_events"];
+   var_dump($whichDB);
+    $add_events=$_POST["addSub"];
+    $add_description = $_POST["Describe"];
+     var_dump($add_events);
+    
 
         if(empty($add_events)) {
             $valid = false;
         }
 
-        $query = "INSERT INTO " . $whichDB . " (list) VALUES ('$add_events')";
+        $query = "INSERT INTO " . $whichDB . " (list, description) VALUES ('$add_events', '$add_description')";
         if($valid) {
-            if(mysqli_query($dbc, $query)) {
-                header('Location: addSubEvents.php');
+            if(mysqli_query($conn, $query)) {
+                 header("Location: addSubEvents.php");
             } else {
-                echo 'Error: ' . mysqli_error($dbc);
+                echo 'Error: ' . mysqli_error($conn);
             }
         } else {
             echo 'Invalid Entry';
         }
     }
+    
 ?>
 </body>
 </html>

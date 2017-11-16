@@ -7,34 +7,56 @@
 </head>
 <body>
 <?php
-    require_once ("config.php");
-    $add_event = mysqli_real_escape_string($dbc, $_REQUEST['Event']);
-    $valid = true;
-    if(isset($_POST['submit'])) {
+  $valid = true;
+  if(isset($_POST['submit'])) {
+      $add_event = $_POST["Event"];
+      $add_desc = $_POST["Describe"];
+      echo $add_event;
+      $image = $_FILES["image"]["name"];
+      $imagetype = $_FILES["image"]["type"];
+      $filetype = explode("/", "$imagetype");
+      if (isset($_FILES['image'])) {
+          // $errors     = array();
+          $maxsize = 20971526787;
+          $acceptable = array(
+              'image/jpeg',
+              'image/jpg',
+              'image/gif',
+              'image/png');
+          if (($_FILES['image']['size'] >= $maxsize) || ($_FILES["image"]["size"] == 0)) {
+              ?>
+              <script>
+                  alert('file size out of limit');
+                  window.open('addEvent.php', '_self');
+              </script>
+              <?php
+          } else {
 
-        if(empty($add_event)) {
-            $valid = false;
-        }
+              $dbc = mysqli_connect("localhost", "root", "", "eventmanage");
+              $conn = mysqli_connect("localhost", "root", "", "trial");
+              $uploaddir = "C:\xampp\htdocs\trial\Images";
+              $uploadfile = $uploaddir . basename($_FILES['image']['name']);
+              move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
+              $query = "INSERT INTO events (event_name,image, details) VALUES ('$add_event','$image','$add_desc')";
 
-        $query = "INSERT INTO events (event_name) VALUES ('$add_event')";
-
-        if($valid) {
-            if(mysqli_query($dbc, $query)) {
-                echo 'Successfully added';
-            } else {
-                echo 'ERROR: ' . mysqli_error($dbc);
-            }
-
-            if(mysqli_query($dbc, 'select 1 from '. $add_event . ' LIMIT 1')) {
-                echo 'Table exists';
-            } else {
-                $sql = "CREATE TABLE " .$add_event. " (id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY, list VARCHAR(30) NOT NULL)";
-
-                if (mysqli_query($dbc, $sql)) {
-                    $file = strtolower($add_event) . ".php";
-                    $title = strtolower($add_event);
-                    $fh = fopen($file, 'a'); // or die("error");
-                    $stringData = '
+              if ($valid) {
+                  if (mysqli_query($dbc, $query)) {
+                      // echo 'Successfully added';
+                  } else {
+                      echo 'ERROR: ' . mysqli_error($dbc);
+                  }
+                  if (mysqli_query($conn, 'select 1 from ' . $add_event . ' LIMIT 1')) {
+                      //header("Location: addEvent.php");
+                      echo 'Table exists';
+                  } else {
+                      $sql = "CREATE TABLE " . $add_event . " (id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY, list VARCHAR(30) NOT NULL, description VARCHAR(3000) NOT NULL)";
+                      $squery = "CREATE TABLE " . $add_event . " (id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,email VARCHAR(30), event1 VARCHAR(30),event2 VARCHAR(30), event3 VARCHAR(30) ,event4 VARCHAR(30)NOT NULL)";
+                      $run = mysqli_query($dbc, $squery);
+                      if (mysqli_query($conn, $sql)) {
+                          $file = strtolower($add_event) . ".php";
+                          $title = strtolower($add_event);
+                          $fh = fopen($file, 'a'); // or die("error");
+                          $stringData = '
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,26 +94,35 @@
 			<div class="col-10" style="top: 60px;">
 				<main>
 				    <?php
-				    echo \'<section><h1 id = "Starter">Text Content here ... Gonna write much ... </section>\';
-                    require_once("config.php");
-                    $query = \'SELECT list FROM '. $title;
-                    fwrite($fh, $stringData);
-                    fwrite($fh, '\';
+				    require_once("config.php");
+				    $query = \'SELECT event_name, details FROM events\';
                     $response = @mysqli_query($dbc, $query);
                     if($response) {
                         while ($row = mysqli_fetch_array($response)) {
-                            echo \' <section> <h1 style="display: none" id = "\' .$row[\'list\'] .\'">\' .$row[\'list\'] .\'</section>\';
+                            if($row[\'event_name\']==\'' . $add_event;
+                          fwrite($fh, $stringData);
+                          fwrite($fh, '\')
+                                echo \'<section><h2 id = "Starter">\'.$row[\'details\'].\'</h2></section>\';
+                        }
+                    }
+                    require_once ("temp.php");
+                    $query = \'SELECT list, description FROM ' . $title);
+                          fwrite($fh, '\';
+                    $response = @mysqli_query($dbc, $query);
+                    if($response) {
+                        while ($row = mysqli_fetch_array($response)) {
+                            echo \' <section> <h3 style="display: none" id = "\' .$row[\'list\'] .\'">\' .$row[\'description\'] .\'</h3></section>\';
                         }
                     }
                     ?>
 				</main>
 			</div>
 			<nav class=\'sidebar col-2\'>');
-                    fwrite($fh, '<ul class="nav nav-pills flex-column">
+                          fwrite($fh, '<ul class="nav nav-pills flex-column">
                     <?php
                     require_once(\'config.php\');
-                    $query = \'SELECT list FROM ' . $title );
-                    fwrite($fh,' \' ;
+                    $query = \'SELECT list FROM ' . $title);
+                          fwrite($fh, ' \' ;
                     $response = @mysqli_query($dbc, $query);
                     if($response) {
                         while ($row = mysqli_fetch_array($response)) {
@@ -116,16 +147,18 @@
     </script>
 </body>
 </html>');
-                    fclose($fh);
-                    header('Location: addEvent.php');
-                } else {
-                    echo "Error creating table: " . mysqli_error($dbc);
-                }
-            }
-        } else {
-            echo 'Invalid Entry';
-        }
-    }
+                          fclose($fh);
+                          header("Location: addEvent.php");
+                      } else {
+                          echo "Error creating table: " . mysqli_error($dbc);
+                      }
+                  }
+              } else {
+                  echo 'Invalid Entry';
+              }
+          }
+      }
+  }
 ?>
 </body>
 </html>
