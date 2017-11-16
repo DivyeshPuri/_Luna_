@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device width, initial-scale=1, shrink-to-fit=no">
     <title>Luna</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="dispRegistrationscss.css">
+    <link href="font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid" id="wrapper">
@@ -69,6 +69,10 @@
                     <div class="form-group">
                         <label for="addsub">Add SubEvent</label>
                         <input type="text" id="addsub" class="form-control" name="addSub">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Add Description</label>
+                        <textarea class="form-control" id="description" rows="5" name="Describe"></textarea>
                     </div>
                     <button class="btn btn-primary" type="submit" name="submit">Add</button>
                 </form>
