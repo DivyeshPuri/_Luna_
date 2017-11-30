@@ -1,8 +1,9 @@
 # _Luna_
 ## Steps to Run Luna
 * Install [XAMPP](https://www.apachefriends.org/download.html)
-* Move the Luna files in htdocs(a folder in XAMPP)
-* Make 3 Databases with name :
+* Download the zip file.
+* Move the _Luna_ files in htdocs(a folder in XAMPP) & extract files.
+* Make 3 Databases, using phpmyadmin, with name :
 	* eventmanage
 		- Make 2 table in it:
 			1) adminlogin containing columns id, email, password & image
